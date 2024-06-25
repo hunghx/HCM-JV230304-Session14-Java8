@@ -3,10 +3,7 @@ import method.IColorable;
 import method.Shape;
 
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
@@ -60,5 +57,21 @@ public class Main {
 //        System.out.println(pow2);
 
 
+
+        // ==================     Bài tâp    ==========================
+//        Sử dụng Stream API để duyệt qua mảng và phương thức max() để tìm số lớn nhất trong mảng. IntStream , Stream
+//        Sử dụng Stream API và phương thức filter() để tìm số chẵn
+//        Sử dụng Stream API và phương thức filter() để lọc các số lớn hơn một giá trị xác định mà người dùng nhập vào
+//        Sử dụng Stream API và phương thức reduce() để tính tổng của các số trong danh sách.
+//        Sử dụng Stream API và phương thức anyMatch() để kiểm tra xem danh sách có chứa ít nhất một số chẵn hay không.
+//        Sử dụng Stream API và phương thức range() để tạo danh sách các số từ x đến y.
+//        Sử dụng Stream API và phương thức sorted() để sắp xếp danh sách theo thứ tự bảng chữ cái.
+//        Sử dụng Stream API và phương thức map() để chuyển các chuỗi thành chữ in hoa.
+
+           Optional<Integer> optionalInteger = stream2.max((o1, o2) -> o1-o2);
+           Integer max = optionalInteger.orElse(null); // nếu ko có thì trả về null
+           System.out.println(max);
+//           boolean check = stream2.anyMatch(integer -> );
+        IntStream.range(1,10).forEach(value -> System.out.println(value));
     }
 }
