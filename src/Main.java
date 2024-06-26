@@ -1,9 +1,11 @@
 import method.Color;
 import method.IColorable;
 import method.Shape;
+import method.Square;
 
 import java.io.InputStream;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
@@ -33,7 +35,7 @@ public class Main {
         Stream<Integer> stream3 = stream1.distinct(); // loại bỏ các phần tử trùng lặp
         // tổng các phần tử ko trung lặp
         //  R apply(T t, U u);
-        Integer sum = stream3.reduce(0,(temp,num)->temp+num);
+        Integer sum = stream3.reduce(0, Integer::sum);
         System.out.println(sum);
 
         // các thao tác trung gian thường gặp : filter, map, limit, sorted ,distinct
@@ -58,6 +60,9 @@ public class Main {
 
 
 
+
+
+
         // ==================     Bài tâp    ==========================
 //        Sử dụng Stream API để duyệt qua mảng và phương thức max() để tìm số lớn nhất trong mảng. IntStream , Stream
 //        Sử dụng Stream API và phương thức filter() để tìm số chẵn
@@ -72,6 +77,21 @@ public class Main {
            Integer max = optionalInteger.orElse(null); // nếu ko có thì trả về null
            System.out.println(max);
 //           boolean check = stream2.anyMatch(integer -> );
-        IntStream.range(1,10).forEach(value -> System.out.println(value));
+        IntStream.range(1,10).forEach(System.out::println);
+//        Square s = new Square();
+        // instance :: methodName
+//        Arrays.stream(arr).forEach(s::print);
+        // ClassName:: method
+        Arrays.stream(arr).forEach(Square::print);
+
+
+        // chuyển đổi mảng các số nguyên thành mảng square
+        List<Integer> doDais = Arrays.asList(1,2,3,4,5);
+        //
+        List<Square> squareList = doDais.stream().map(Square::new).toList();
+
+
+
+
     }
 }
