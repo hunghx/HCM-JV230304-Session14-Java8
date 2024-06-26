@@ -4,6 +4,10 @@ import method.Shape;
 import method.Square;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -90,8 +94,49 @@ public class Main {
         //
         List<Square> squareList = doDais.stream().map(Square::new).toList();
 
+        // Các lớp và interface thao tác với thời gian
+        // ngày thangd năm
+        LocalDate today = LocalDate.now();
+        LocalDate quocKhanh = LocalDate.of(1945,9,2);
+        String time = today.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")); // định dạng  dd/m/yyyy
+        System.out.println(time);
 
+        // 100 ngày sau ngày hôm nay
+        LocalDate _100DaysAgo = today.plusDays(100);
+        System.out.println(_100DaysAgo);
 
+        // Giờ phút giây
+        LocalTime time1 = LocalTime.now();
 
+        // ngày thắng năm , giờ phút giây
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        // Khu vực / zone
+        ZonedDateTime tokyo = ZonedDateTime.now(ZoneId.of("Asia/Tokyo"));
+        System.out.println(tokyo);
+
+        // Period : tihs khoảng cách thời gian tính tới nano giây
+        // Duration : tính khoảng cách giữa 2 ngày
+
+        // Optional : có thể cos giá tri
+
+//        Optional<String> optionalS = Optional.of(null);
+//
+//        // các phương thức của optional
+//        // kiểm tra giá trị có tồn tại hay ko (khác null)
+//        if (optionalS.isPresent()){
+//            // in ra độ da của chuỗi
+//            System.out.println(optionalS.get().length());
+//        }else {
+//            System.out.println("Giá trị của chuô dadng là null");
+//        }
+        List<Integer> list5 = Stream.generate(() ->new Random().nextInt(50) ).limit(50).toList();
+
+        // sử dụng optional đểtimfm phần tử lớn thứ 1 chia hết cho 7 , nếu ko tìm được thì trả về -1 hoặc lỗi
+        System.out.println(list5);
+        Integer max7 =list5.stream().filter(integer -> integer%7==0).max(Comparator.comparingInt(o -> o))
+//                .orElse(null);
+                .orElseThrow(() -> new RuntimeException("ko có so nao chia het cho 7"));
+        System.out.println("so ơn nhat chia het cho 7 la "+max7);
     }
 }
